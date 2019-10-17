@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <title> Iscola - ViksTech - Dungeon</title>
+
+        <!-- Bootstrap -->
+
+        <link href="fonts/ionicons/2.0.1/css/ionicons.min.css" type="text/css" media="screen" rel="stylesheet">
+        <link href="css/styles.css" rel="stylesheet">
+        <!--[if lt IE 9]>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+        <![endif]-->
+        <link rel="apple-touch-icon" sizes="57x57" href="../apple-icon-57x57.html">
+        <link rel="apple-touch-icon" sizes="60x60" href="../apple-icon-60x60.html">
+        <link rel="apple-touch-icon" sizes="72x72" href="../apple-icon-72x72.html">
+        <link rel="apple-touch-icon" sizes="76x76" href="../apple-icon-76x76.html">
+        <link rel="apple-touch-icon" sizes="114x114" href="../apple-icon-114x114.html">
+        <link rel="apple-touch-icon" sizes="120x120" href="../apple-icon-120x120.html">
+        <link rel="apple-touch-icon" sizes="144x144" href="../apple-icon-144x144.html">
+        <link rel="apple-touch-icon" sizes="152x152" href="../apple-icon-152x152.html">
+        <link rel="apple-touch-icon" sizes="180x180" href="../apple-icon-180x180.html">
+
+        <meta name="msapplication-TileColor" content="#181818">
+        <meta name="msapplication-TileImage" content="../ms-icon-144x144.html">
+        <meta name="theme-color" content="#181818">
+        <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    </head>
+    <body data-spy="scroll" data-target=".navbar-custom">
+        <div class="hidden" id="tpls">
+            <a id="startGameButton" class="button-game" style="width: 55%;top: 60%;position: relative;" href="javascript:game.actions.showNewGame()">
+                <span class="button-game-bg-left"></span>
+                <span class="button-game-bg-mid">
+                    <span>Inizia il gioco!</span>
+                </span>
+                <span class="button-game-bg-right"></span>
+            </a>
+
+            <div id="initNewGame" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 20%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Sei pronto ad affrontare una nuova partita?</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description"><label>Inserisci il codice del tuo robot<br/><input type="text" id="robotID" class="text-dark text-center"/></label></div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                        <a class="button-game" href="javascript:game.actions.startNewGame()">
+                            <span class="button-game-bg-left"></span>
+                            <span class="button-game-bg-mid">
+                                <span id="btn-text">Avvia il gioco!</span>
+                            </span>
+                            <span class="button-game-bg-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div id="gameStarted" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 20%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Gioco in corso</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Cosa ci sarà mai dietro l'angolo?</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="initNewGame2Step" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 20%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Sei pronto per giocare</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Posiziona il robot a inizio circuito e premi il tasto posto sopra al robot per iniziare</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="question" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 10%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">{title}</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">{description}</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="gameOver" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 10%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Hai PERSO!!</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Su {totAnswer} domande hai risposto giusto a {goodAnswer} e sbagliato a {badAnswer}</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                        <a class="button-game" href=".">
+                            <span class="button-game-bg-left"></span>
+                            <span class="button-game-bg-mid">
+                                <span id="btn-text">Ritenta!</span>
+                            </span>
+                            <span class="button-game-bg-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div id="victory" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 10%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Hai VINTO!!</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Su {totAnswer} domande hai risposto giusto a {goodAnswer} e sbagliato a {badAnswer}</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                        <a class="button-game" href=".">
+                            <span class="button-game-bg-left"></span>
+                            <span class="button-game-bg-mid">
+                                <span id="btn-text">Gioca di nuovo!</span>
+                            </span>
+                            <span class="button-game-bg-right"></span>
+                        </a>
+                    </div>
+                </div>
+
+            </div>
+            <div id="badStillAlive" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 20%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Ouch!</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Non è andata bene.. ma sei ancora vivo</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                    </div>
+                </div>
+
+            </div>
+            <div id="goodStillAlive" style="width: 70%;position: relative;margin-left: auto;margin-right: auto;top: 20%;">
+                <div class="modal-content">
+                    <div class="modal-header pattern">
+                        <h4 class="modal-title">Woow!</h4>
+                    </div>
+                    <div class="modal-body pattern-dark clearfix" id="modalBody">
+                        <div class="clearfix"></div>
+                        <div class="text-white description">Alla grande!</div>
+                    </div>
+                    <div class="modal-footer pattern">
+                        <div class="container"></div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <div class="container-fluid">
+            <div class="row">
+                <header id="home">
+
+                    <h1 style="margin:0!important; padding:0!important;">
+                        <img onload="this.style.opacity = '1';" class="big-logo" src="img/logo.png" alt="Logo">
+                    </h1>
+                    <div style="position: absolute;text-align: center;width: 100%;/* top: 30%; */left: auto;right: auto;bottom: auto;margin-top: auto;margin-bottom: auto;margin-left: auto;margin-right: auto;height: 100%; vertical-align: middle; " id="stage"></div>
+                </header>
+            </div>
+            <div class="Divider">
+                <hr class="Divider-rule">
+            </div>
+            <!--  <div class="row pattern">
+                  <section class="features" id="features">
+                      <div class="container">
+                          <div class="row">
+                              <h2>Regole del gioco</h2>
+                              <p class="section-description">
+                                  Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..Scrivere qua le regole del gioco..
+                              </p>
+                          </div>
+                      </div>
+                  </section>
+              </div>
+  
+              <div class="Divider">
+                  <hr class="Divider-rule">
+              </div>-->
+            <div class="row pattern-dark">
+                <footer class="container footer">
+                    <div class="row">
+
+                    </div>
+                    <div class="row">
+                        <p class="copyright">Copyright &copy; 2019 by <a href="https://vikstech.com/" target="_blank" >ViksTech</a> per Laboratorio Iscola Linea B3.</p>
+                    </div>
+                </footer>
+            </div>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script> 
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+        <link href="https://fonts.googleapis.com/css?family=Cinzel|Cinzel+Decorative" rel="stylesheet">
+        <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/paho-mqtt/1.1.0/paho-mqtt.js" type="text/javascript"></script>-->
+        <script src="vendor/paho-mqtt-min.js" type="text/javascript"></script>
+        <script src="js/main.js"></script>
+        <!--<script src="js/help.js"></script>-->
+
+
+    </body>
+
+</html>
